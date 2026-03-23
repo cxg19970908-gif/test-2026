@@ -1,0 +1,402 @@
+{\rtf1\ansi\ansicpg936\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset129 AppleSDGothicNeo-Regular;\f2\froman\fcharset0 Times-Roman;
+}
+{\colortbl;\red255\green255\blue255;\red6\green21\blue57;\red21\green91\blue35;}
+{\*\expandedcolortbl;;\cssrgb\c1569\c11765\c28627\c70196;\cssrgb\c7843\c42353\c18039;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="ko">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>
+\f1 \'bd\'ba\'b8\'b6\'c6\'ae
+\f0  
+\f1 \'c3\'e2\'bc\'ae
+\f0  
+\f1 \'c3\'bc\'c5\'a9
+\f0  
+\f1 \'bd\'c3\'bd\'ba\'c5\'db
+\f0 </title>\
+    <!-- Tailwind CSS CDN -->\
+    <script src="https://cdn.tailwindcss.com"></script>\
+    <!-- Google Fonts -->\
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">\
+    <style>\
+        body \{ font-family: 'Inter', 'Pretendard', sans-serif; background-color: #f8fafc; \}\
+        .status-btn.active-present \{ background-color: #10b981; color: white; border-color: #10b981; \}\
+        .status-btn.active-absent \{ background-color: #ef4444; color: white; border-color: #ef4444; \}\
+        .status-btn.active-late \{ background-color: #f59e0b; color: white; border-color: #f59e0b; \}\
+    </style>\
+</head>\
+<body class="p-4 md:p-8">\
+\
+    <div class="max-w-2xl mx-auto">\
+        <!-- 
+\f1 \'c7\'ec\'b4\'f5
+\f0  -->\
+        <header class="mb-8 text-center">\
+            <h1 class="text-3xl font-bold text-slate-800">
+\f1 \'c3\'e2\'bc\'ae
+\f0  
+\f1 \'c3\'bc\'c5\'a9
+\f0  
+\f1 \'bd\'c3\'bd\'ba\'c5\'db
+\f0 </h1>\
+            <p class="text-slate-500 mt-2">
+\f1 \'c7\'d0\'bb\'fd\'b5\'e9\'c0\'c7
+\f0  
+\f1 \'c3\'e2\'bc\'ae
+\f0  
+\f1 \'bb\'f3\'c5\'c2\'b8\'a6
+\f0  
+\f1 \'bd\'c7\'bd\'c3\'b0\'a3\'c0\'b8\'b7\'ce
+\f0  
+\f1 \'b0\'fc\'b8\'ae\'c7\'cf\'bc\'bc\'bf\'e4
+\f0 .</p>\
+        </header>\
+\
+        <!-- 
+\f1 \'c0\'d4\'b7\'c2
+\f0  
+\f1 \'c6\'fb
+\f0  
+\f1 \'c4\'ab\'b5\'e5
+\f0  -->\
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">\
+            <div class="space-y-4">\
+                <div>\
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">
+\f1 \'c7\'d0\'bb\'fd
+\f0  
+\f1 \'c0\'cc\'b8\'a7
+\f0 </label>\
+                    <input type="text" id="studentName" placeholder="
+\f1 \'c0\'cc\'b8\'a7\'c0\'bb
+\f0  
+\f1 \'c0\'d4\'b7\'c2\'c7\'cf\'bc\'bc\'bf\'e4
+\f0 " \
+                        class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all">\
+                </div>\
+\
+                <div>\
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">
+\f1 \'c3\'e2\'bc\'ae
+\f0  
+\f1 \'bb\'f3\'c5\'c2
+\f0 </label>\
+                    <div class="grid grid-cols-3 gap-3">\
+                        <button onclick="setStatus('
+\f1 \'c3\'e2\'bc\'ae
+\f0 ')" id="btn-present" class="status-btn border border-slate-300 py-3 rounded-lg hover:bg-slate-50 transition-all font-medium">
+\f1 \'c3\'e2\'bc\'ae
+\f0 </button>\
+                        <button onclick="setStatus('
+\f1 \'b0\'e1\'bc\'ae
+\f0 ')" id="btn-absent" class="status-btn border border-slate-300 py-3 rounded-lg hover:bg-slate-50 transition-all font-medium">
+\f1 \'b0\'e1\'bc\'ae
+\f0 </button>\
+                        <button onclick="setStatus('
+\f1 \'c1\'f6\'b0\'a2
+\f0 ')" id="btn-late" class="status-btn border border-slate-300 py-3 rounded-lg hover:bg-slate-50 transition-all font-medium">
+\f1 \'c1\'f6\'b0\'a2
+\f0 </button>\
+                    </div>\
+                </div>\
+\
+                <button onclick="submitAttendance()" \
+                    class="w-full bg-slate-800 text-white py-4 rounded-xl font-bold hover:bg-slate-900 transition-colors shadow-lg mt-4">\
+                    
+\f1 \'b1\'e2\'b7\'cf
+\f0  
+\f1 \'c0\'fa\'c0\'e5\'c7\'cf\'b1\'e2
+\f0 \
+                </button>\
+            </div>\
+        </div>\
+\
+        <!-- 
+\f1 \'b8\'ae\'bd\'ba\'c6\'ae
+\f0  
+\f1 \'c3\'e2\'b7\'c2
+\f0  
+\f1 \'bf\'b5\'bf\'aa
+\f0  -->\
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">\
+            <div class="px-6 py-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">\
+                <h2 class="font-bold text-slate-700">
+\f1 \'c3\'d6\'b1\'d9
+\f0  
+\f1 \'c3\'e2\'bc\'ae
+\f0  
+\f1 \'b1\'e2\'b7\'cf
+\f0 </h2>\
+                <span id="recordCount" class="text-xs font-semibold bg-blue-100 text-blue-600 px-2.5 py-1 rounded-full">0
+\f1 \'b0\'c7
+\f0 </span>\
+            </div>\
+            <ul id="attendanceList" class="divide-y divide-slate-100">\
+                <!-- 
+\f1 \'b5\'a5\'c0\'cc\'c5\'cd\'b0\'a1
+\f0  
+\f1 \'bf\'a9\'b1\'e2\'bf\'a1
+\f0  
+\f1 \'bd\'c7\'bd\'c3\'b0\'a3\'c0\'b8\'b7\'ce
+\f0  
+\f1 \'c3\'df\'b0\'a1\'b5\'cb\'b4\'cf\'b4\'d9
+\f0  -->\
+                <li class="p-8 text-center text-slate-400">
+\f1 \'b5\'a5\'c0\'cc\'c5\'cd\'b8\'a6
+\f0  
+\f1 \'ba\'d2\'b7\'af\'bf\'c0\'b4\'c2
+\f0  
+\f1 \'c1\'df
+\f0 ...</li>\
+            </ul>\
+        </div>\
+    </div>\
+\
+    <!-- Firebase SDK (Modular) -->\
+    <script type="module">\
+        import \{ initializeApp \} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";\
+        import \{ getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, deleteDoc, doc \} \
+            from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";\
+\
+        // --- [
+\f1 \'bc\'b3\'c1\'a4
+\f0 ] 
+\f1 \'ba\'bb\'c0\'ce\'c0\'c7
+\f0  Firebase 
+\f1 \'c7\'c1\'b7\'ce\'c1\'a7\'c6\'ae
+\f0  
+\f1 \'bc\'b3\'c1\'a4\'c0\'b8\'b7\'ce
+\f0  
+\f1 \'b1\'b3\'c3\'bc\'c7\'cf\'bc\'bc\'bf\'e4
+\f0  ---\
+        const firebaseConfig = \{\
+           
+\f2\fs28 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 apiKey: \cf3 \strokec3 "AIzaSyAwXnUTgBhX2v6QAg-JkzitOd-gp5EU_y4"\cf2 \strokec2 ,\
+\pard\pardeftab720\partightenfactor0
+\cf2 \'a0 authDomain: \cf3 \strokec3 "test2026-eabe3.firebaseapp.com"\cf2 \strokec2 ,\
+\'a0 projectId: \cf3 \strokec3 "test2026-eabe3"\cf2 \strokec2 ,\
+\'a0 storageBucket: \cf3 \strokec3 "test2026-eabe3.firebasestorage.app"\cf2 \strokec2 ,\
+\'a0 messagingSenderId: \cf3 \strokec3 "580330830058"\cf2 \strokec2 ,\
+\'a0 appId: \cf3 \strokec3 "1:580330830058:web:a0b31da24dba5d5e827f93"\cf2 \strokec2 ,\
+\'a0 measurementId: \cf3 \strokec3 "G-H2J8YPXD68"
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0         \};\
+\
+        // Firebase 
+\f1 \'c3\'ca\'b1\'e2\'c8\'ad
+\f0 \
+        const app = initializeApp(firebaseConfig);\
+        const db = getFirestore(app);\
+        const attendanceCol = collection(db, "attendance");\
+\
+        // 
+\f1 \'bb\'f3\'c5\'c2
+\f0  
+\f1 \'b0\'fc\'b8\'ae
+\f0  
+\f1 \'ba\'af\'bc\'f6
+\f0 \
+        let selectedStatus = '';\
+\
+        // 
+\f1 \'bb\'f3\'c5\'c2
+\f0  
+\f1 \'bc\'b1\'c5\'c3
+\f0  
+\f1 \'c7\'d4\'bc\'f6
+\f0  (
+\f1 \'c0\'fc\'bf\'aa
+\f0  
+\f1 \'b5\'ee\'b7\'cf
+\f0 )\
+        window.setStatus = (status) => \{\
+            selectedStatus = status;\
+            // 
+\f1 \'b9\'f6\'c6\'b0
+\f0  
+\f1 \'bd\'ba\'c5\'b8\'c0\'cf
+\f0  
+\f1 \'c3\'ca\'b1\'e2\'c8\'ad
+\f0 \
+            document.querySelectorAll('.status-btn').forEach(btn => \{\
+                btn.classList.remove('active-present', 'active-absent', 'active-late');\
+            \});\
+            // 
+\f1 \'bc\'b1\'c5\'c3\'b5\'c8
+\f0  
+\f1 \'b9\'f6\'c6\'b0
+\f0  
+\f1 \'bd\'ba\'c5\'b8\'c0\'cf
+\f0  
+\f1 \'c0\'fb\'bf\'eb
+\f0 \
+            if(status === '
+\f1 \'c3\'e2\'bc\'ae
+\f0 ') document.getElementById('btn-present').classList.add('active-present');\
+            if(status === '
+\f1 \'b0\'e1\'bc\'ae
+\f0 ') document.getElementById('btn-absent').classList.add('active-absent');\
+            if(status === '
+\f1 \'c1\'f6\'b0\'a2
+\f0 ') document.getElementById('btn-late').classList.add('active-late');\
+        \};\
+\
+        // 
+\f1 \'c3\'e2\'bc\'ae
+\f0  
+\f1 \'b5\'a5\'c0\'cc\'c5\'cd
+\f0  
+\f1 \'c0\'fc\'bc\'db
+\f0 \
+        window.submitAttendance = async () => \{\
+            const nameInput = document.getElementById('studentName');\
+            const name = nameInput.value.trim();\
+\
+            if (!name) \{ alert("
+\f1 \'c0\'cc\'b8\'a7\'c0\'bb
+\f0  
+\f1 \'c0\'d4\'b7\'c2\'c7\'d8\'c1\'d6\'bc\'bc\'bf\'e4
+\f0 ."); return; \}\
+            if (!selectedStatus) \{ alert("
+\f1 \'bb\'f3\'c5\'c2\'b8\'a6
+\f0  
+\f1 \'bc\'b1\'c5\'c3\'c7\'d8\'c1\'d6\'bc\'bc\'bf\'e4
+\f0 ."); return; \}\
+\
+            try \{\
+                await addDoc(attendanceCol, \{\
+                    name: name,\
+                    status: selectedStatus,\
+                    timestamp: serverTimestamp()\
+                \});\
+                \
+                // 
+\f1 \'c0\'d4\'b7\'c2\'c3\'a2
+\f0  
+\f1 \'c3\'ca\'b1\'e2\'c8\'ad
+\f0 \
+                nameInput.value = '';\
+                selectedStatus = '';\
+                document.querySelectorAll('.status-btn').forEach(btn => \{\
+                    btn.classList.remove('active-present', 'active-absent', 'active-late');\
+                \});\
+            \} catch (e) \{\
+                console.error("Error adding document: ", e);\
+                alert("
+\f1 \'c0\'fa\'c0\'e5\'bf\'a1
+\f0  
+\f1 \'bd\'c7\'c6\'d0\'c7\'df\'bd\'c0\'b4\'cf\'b4\'d9
+\f0 . Firebase 
+\f1 \'bc\'b3\'c1\'a4\'c0\'bb
+\f0  
+\f1 \'c8\'ae\'c0\'ce\'c7\'cf\'bc\'bc\'bf\'e4
+\f0 .");\
+            \}\
+        \};\
+\
+        // 
+\f1 \'b5\'a5\'c0\'cc\'c5\'cd
+\f0  
+\f1 \'bb\'e8\'c1\'a6
+\f0  
+\f1 \'c7\'d4\'bc\'f6
+\f0 \
+        window.deleteRecord = async (id) => \{\
+            if(confirm('
+\f1 \'c0\'cc
+\f0  
+\f1 \'b1\'e2\'b7\'cf\'c0\'bb
+\f0  
+\f1 \'bb\'e8\'c1\'a6\'c7\'cf\'bd\'c3\'b0\'da\'bd\'c0\'b4\'cf\'b1\'ee
+\f0 ?')) \{\
+                await deleteDoc(doc(db, "attendance", id));\
+            \}\
+        \};\
+\
+        // 
+\f1 \'bd\'c7\'bd\'c3\'b0\'a3
+\f0  
+\f1 \'b5\'a5\'c0\'cc\'c5\'cd
+\f0  
+\f1 \'bc\'f6\'bd\'c5
+\f0  
+\f1 \'b9\'d7
+\f0  
+\f1 \'c8\'ad\'b8\'e9
+\f0  
+\f1 \'c7\'a5\'bd\'c3
+\f0 \
+        const q = query(attendanceCol, orderBy("timestamp", "desc"));\
+        onSnapshot(q, (snapshot) => \{\
+            const listEl = document.getElementById('attendanceList');\
+            const countEl = document.getElementById('recordCount');\
+            listEl.innerHTML = '';\
+            countEl.innerText = `$\{snapshot.size\}
+\f1 \'b0\'c7
+\f0 `;\
+\
+            if (snapshot.empty) \{\
+                listEl.innerHTML = `<li class="p-8 text-center text-slate-400">
+\f1 \'b1\'e2\'b7\'cf\'c0\'cc
+\f0  
+\f1 \'be\'f8\'bd\'c0\'b4\'cf\'b4\'d9
+\f0 .</li>`;\
+                return;\
+            \}\
+\
+            snapshot.forEach((doc) => \{\
+                const data = doc.data();\
+                const date = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString('ko-KR', \{\
+                    month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'\
+                \}) : '
+\f1 \'b9\'e6\'b1\'dd
+\f0  
+\f1 \'c0\'fc
+\f0 ';\
+\
+                let statusColor = '';\
+                if(data.status === '
+\f1 \'c3\'e2\'bc\'ae
+\f0 ') statusColor = 'text-green-600 bg-green-50';\
+                else if(data.status === '
+\f1 \'b0\'e1\'bc\'ae
+\f0 ') statusColor = 'text-red-600 bg-red-50';\
+                else if(data.status === '
+\f1 \'c1\'f6\'b0\'a2
+\f0 ') statusColor = 'text-amber-600 bg-amber-50';\
+\
+                const li = document.createElement('li');\
+                li.className = "flex items-center justify-between p-5 hover:bg-slate-50 transition-colors";\
+                li.innerHTML = `\
+                    <div class="flex items-center space-x-4">\
+                        <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500">\
+                            $\{data.name.charAt(0)\}\
+                        </div>\
+                        <div>\
+                            <p class="font-bold text-slate-800">$\{data.name\}</p>\
+                            <p class="text-xs text-slate-400">$\{date\}</p>\
+                        </div>\
+                    </div>\
+                    <div class="flex items-center space-x-3">\
+                        <span class="px-3 py-1 rounded-full text-xs font-bold $\{statusColor\}">$\{data.status\}</span>\
+                        <button onclick="deleteRecord('$\{doc.id\}')" class="text-slate-300 hover:text-red-500 transition-colors">\
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
+                            </svg>\
+                        </button>\
+                    </div>\
+                `;\
+                listEl.appendChild(li);\
+            \});\
+        \});\
+    </script>\
+</body>\
+</html>}
